@@ -4,7 +4,9 @@ import {
     Route
 } from "react-router-dom";
 import { Dashboard } from "./dashboard/Dashboard";
-import { ProtectedRoute } from "./utils/ProtectedRoute";
+import { Login } from "./login/Login";
+import { Register } from "./register/Register";
+// import { ProtectedRoute } from "./utils/ProtectedRoute";
 
 export const AppRoutes = () => {
     return (
@@ -13,11 +15,14 @@ export const AppRoutes = () => {
                 <Route 
                     path="/Dashboard" 
                     element={
-                        <ProtectedRoute>
-                            <Dashboard/> 
-                        </ProtectedRoute>
+                        // <ProtectedRoute>
+                        <Dashboard/> 
+                        // </ProtectedRoute>
                     } 
                 />
+
+                <Route path="/Login" element={<Login/>} />
+                <Route path="/Register" element={<Register/>} />
             </Routes>
         </Router>
     )
