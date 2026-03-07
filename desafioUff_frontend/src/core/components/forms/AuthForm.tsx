@@ -47,17 +47,17 @@ export const AuthForm: React.FC<AuthFormProps> = ({
         <div className="flex min-h-dvh">
             <div className="flex relative w-full justify-center items-center">
                 <div className="flex flex-col justify-center items-start gap-16">
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
                         {formType == 'Login' ? (
-                            <div>
+                            <>
                                 <h1 className="text-4xl">Bem vindo de volta!</h1>
                                 <p>Insira suas informações para acessar sua conta</p>
-                            </div>
+                            </>
                         ) : (
-                            <div>
+                            <>
                                 <h1 className="text-4xl">Comece agora</h1>
                                 <p>Registre-se para começar a ter o controle absoluto das suas tarefas</p>
-                            </div>
+                            </>
                         )}
                     </div>
 
