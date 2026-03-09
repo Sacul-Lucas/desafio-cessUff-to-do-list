@@ -6,7 +6,8 @@ import {
 import { Dashboard } from "./dashboard/Dashboard";
 import { Login } from "./login/Login";
 import { Register } from "./register/Register";
-// import { ProtectedRoute } from "./utils/ProtectedRoute";
+import { ProtectedRoute } from "./utils/ProtectedRoute";
+import { Settings } from "./settings/Settings";
 
 export const AppRoutes = () => {
     return (
@@ -15,9 +16,18 @@ export const AppRoutes = () => {
                 <Route 
                     path="/Dashboard" 
                     element={
-                        // <ProtectedRoute>
-                        <Dashboard/> 
-                        // </ProtectedRoute>
+                        <ProtectedRoute>
+                            <Dashboard/> 
+                        </ProtectedRoute>
+                    } 
+                />
+
+                <Route 
+                    path="/Settings" 
+                    element={
+                        <ProtectedRoute>
+                            <Settings/> 
+                        </ProtectedRoute>
                     } 
                 />
 
