@@ -4,7 +4,6 @@ interface JwtPayload {
   sub: string
   email: string
   username: string
-  role: string
   exp?: number
 }
 
@@ -43,8 +42,7 @@ export function getUserFromToken() {
   if (!decoded) return null
 
   return {
-    username: decoded.username,
-    role: decoded.role,
+    username: decoded.username
   }
 }
 

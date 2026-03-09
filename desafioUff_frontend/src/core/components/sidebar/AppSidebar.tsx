@@ -17,7 +17,7 @@ import {
   DropdownMenuTrigger 
 } from "../shadcnComponents/Ui/dropdown-menu"
 import { Toaster } from "../shadcnComponents/Ui/sonner";
-// import { useAuth } from "@/core/lib/utils/useAuth";
+import { useAuth } from "@/core/lib/utils/useAuth";
 
 const items = [
   {
@@ -38,19 +38,18 @@ const items = [
 ]
 
 export function AppSidebar() {
-//   const { role, username, logout } = useAuth()
+  const { username, logout } = useAuth()
 
   return (
     <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>
-            AtmosInsight
+            TaskFlow
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items
-            //   .filter(item => !item.roles || item.roles.includes(role!))
               .map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild {...(location.pathname === item.url ? { isActive: true } : {})}>
@@ -71,7 +70,7 @@ export function AppSidebar() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton className="cursor-pointer">
-                  {/* <User2 /> {username} */}
+                  <User2 /> {username}
                   <ChevronUp className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
@@ -82,11 +81,7 @@ export function AppSidebar() {
                 <DropdownMenuItem className="cursor-pointer">
                   <span>Conta</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <span>Histórico</span>
-                </DropdownMenuItem>
-                {/* onClick={logout}  */}
-                <DropdownMenuItem className="cursor-pointer">
+                <DropdownMenuItem onClick={logout} className="cursor-pointer">
                   Sair
                 </DropdownMenuItem>
               </DropdownMenuContent>
