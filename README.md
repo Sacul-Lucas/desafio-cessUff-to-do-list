@@ -132,30 +132,20 @@ docker-compose up --build
 
 Acesse as aplicações:
 
-Frontend: http://localhost:2000
+Frontend: http://localhost:2000/TaskFlow/Login
 
-Backend: http://localhost:2500
+Backend: http://localhost:2500/api
 
 📄 Documentação de Rotas (Backend)
 
-##Usuários
+### Usuários
 
 | Método      | Rota     | Descrição                |
 |-------------|---------|---------------------------|
 | POST        | /api/users | Cadastro de usuário    |
 | POST        | /api/login | Autenticação (JWT)     |
 
-##Tarefas (rotas privadas)
-
-Método	Rota	Descrição
-
-GET	/api/tasks	Listar tarefas do usuário
-
-POST	/api/tasks	Criar nova tarefa
-
-PUT	/api/tasks/:id	Atualizar tarefa existente
-
-DELETE	/api/tasks/:id	Deletar tarefa existente
+### Tarefas (rotas privadas)
 
 | Método      | Rota     | Descrição                |
 |-------------|---------|---------------------------|
