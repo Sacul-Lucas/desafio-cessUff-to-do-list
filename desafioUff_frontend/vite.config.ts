@@ -5,9 +5,12 @@ import path from "path"
 
 // https://vite.dev/config/
 export default defineConfig(() => {
+  const isDocker = process.env.DOCKER === "true";
+
   return {
     server: {
-      host: 'localhost',
+      open: !isDocker,
+      host: isDocker ? '0.0.0.0' : 'localhost',
       base: '/TaskFlow',
       proxy: {
         '/api': {
