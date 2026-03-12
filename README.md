@@ -22,26 +22,47 @@ O projeto cobre todo o fluxo **fullstack**, do banco de dados ao frontend, com a
 
 /TaskFlow
 │
+
 ├── backend
-│ ├── src
-│ │ ├── controllers # Lógica de rotas
-│ │ ├── models # Modelos Mongoose (User, Task)
-│ │ ├── routes # Definição de endpoints
-│ │ ├── middlewares # Autenticação e validações
-│ │ └── utils # Funções auxiliares (hash, token, etc)
-│ ├── package.json
-│ └── tsconfig.json
+
+│   ├── src
+
+│   │   ├── controllers   # Lógica de rotas
+
+│   │   ├── models        # Modelos Mongoose (User, Task)
+
+│   │   ├── routes        # Definição de endpoints
+
+│   │   ├── middlewares   # Autenticação e validações
+
+│   │   └── utils         # Funções auxiliares (hash, token, etc)
+
+│   ├── package.json
+
+│   └── tsconfig.json
+
 │
+
 ├── frontend
-│ ├── src
-│ │ ├── components # Botões, formulários, layouts
-│ │ ├── pages # Login, Cadastro, Dashboard
-│ │ ├── services # Chamadas API via Axios
-│ │ └── App.tsx
-│ ├── package.json
-│ └── tsconfig.json
+
+│   ├── src
+
+│   │   ├── components    # Botões, formulários, layouts
+
+│   │   ├── pages         # Login, Cadastro, Dashboard
+
+│   │   ├── services      # Chamadas API via Axios
+
+│   │   └── App.tsx
+
+│   ├── package.json
+
+│   └── tsconfig.json
+
 │
+
 ├── docker-compose.yml
+
 └── README.md
 
 
@@ -116,14 +137,29 @@ Frontend: http://localhost:2000
 Backend: http://localhost:2500
 
 📄 Documentação de Rotas (Backend)
-Usuários
-Método	Rota	Descrição
-POST	/api/users	Cadastro
-POST	/api/login	Autenticação (JWT)
 
-Tarefas (rotas privadas)
+##Usuários
+
+| Método      | Rota     | Descrição                |
+|-------------|---------|---------------------------|
+| POST        | /api/users | Cadastro de usuário    |
+| POST        | /api/login | Autenticação (JWT)     |
+
+##Tarefas (rotas privadas)
+
 Método	Rota	Descrição
+
 GET	/api/tasks	Listar tarefas do usuário
+
 POST	/api/tasks	Criar nova tarefa
-PUT	/api/tasks/:id	Atualizar tarefa
-DELETE	/api/tasks/:id	Deletar tarefa
+
+PUT	/api/tasks/:id	Atualizar tarefa existente
+
+DELETE	/api/tasks/:id	Deletar tarefa existente
+
+| Método      | Rota     | Descrição                |
+|-------------|---------|---------------------------|
+| GET        | /api/tasks | Listar tarefas do usuário   |
+| POST        | /api/tasks | Criar nova tarefa    |
+| PUT        | 	/api/tasks/:id | Atualizar tarefa existente     |
+| DELETE        | /api/tasks/:id | Atualizar tarefa existente     |
