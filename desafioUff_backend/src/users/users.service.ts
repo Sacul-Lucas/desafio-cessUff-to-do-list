@@ -61,7 +61,7 @@ export class UsersService {
       .findByIdAndUpdate(
         userId,
         { task: taskId },
-        { new: true },
+        { returnDocument: 'after' },
       )
       .populate('task')
       .exec();
