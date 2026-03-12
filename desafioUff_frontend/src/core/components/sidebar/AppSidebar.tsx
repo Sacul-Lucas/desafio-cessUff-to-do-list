@@ -1,4 +1,4 @@
-import { ChevronUp, Home, Settings, User2, LayoutDashboardIcon } from "lucide-react"
+import { ChevronUp, Home, Settings, User2, LayoutDashboardIcon, ChevronsRight, LayoutList, StickyNote } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -18,13 +18,14 @@ import {
 } from "../shadcnComponents/Ui/dropdown-menu"
 import { Toaster } from "../shadcnComponents/Ui/sonner";
 import { useAuth } from "@/core/lib/utils/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const items = [
-  {
-    title: "Página principal",
-    url: "/TaskFlow",
-    icon: Home,
-  },
+  // {
+  //   title: "Página principal",
+  //   url: "/TaskFlow",
+  //   icon: Home,
+  // },
   {
     title: "Dashboard",
     url: "/TaskFlow/Dashboard",
@@ -37,8 +38,27 @@ const items = [
   },
 ]
 
+// const taskItems = [
+//   {
+//     title: "Próximas",
+//     url: "/TaskFlow/Upcoming",
+//     icon: ChevronsRight,
+//   },
+//   {
+//     title: "Hoje",
+//     url: "/TaskFlow/Today",
+//     icon: LayoutList,
+//   },
+//     {
+//     title: "Stickers",
+//     url: "/TaskFlow/Stickers",
+//     icon: StickyNote,
+//   },
+// ]
+
 export function AppSidebar() {
   const { username, logout } = useAuth()
+  const navigate = useNavigate()
 
   return (
     <Sidebar collapsible="icon">
@@ -63,6 +83,26 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+        {/* <SidebarGroup>
+          <SidebarGroupLabel>
+            Tarefas
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {taskItems
+              .map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild {...(location.pathname === item.url ? { isActive: true } : {})}>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup> */}
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
@@ -81,7 +121,7 @@ export function AppSidebar() {
                 <DropdownMenuItem className="cursor-pointer">
                   <span>Conta</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={logout} className="cursor-pointer">
+                <DropdownMenuItem onClick={() => {logout(); navigate("/Login")}} className="cursor-pointer">
                   Sair
                 </DropdownMenuItem>
               </DropdownMenuContent>

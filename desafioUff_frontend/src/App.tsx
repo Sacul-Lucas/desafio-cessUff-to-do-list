@@ -1,12 +1,15 @@
 import { ThemeProvider } from './core/components/providers/ThemeProvider'
+import { AuthProvider } from './core/components/providers/AuthProvider'
 import { AppRoutes } from './routes/Router'
 import './App.css'
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <AppRoutes />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <AppRoutes />
+      </ThemeProvider>
+    </AuthProvider>
   )
 }
 

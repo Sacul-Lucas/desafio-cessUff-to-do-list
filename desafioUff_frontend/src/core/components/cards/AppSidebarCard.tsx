@@ -1,5 +1,6 @@
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/core/components/shadcnComponents/Ui/card";
 import { SparklesIcon } from "lucide-react"
+import { Separator } from "../shadcnComponents/Ui/separator";
 
 interface AppSidebarCardProps {
     cardTitle?: string;
@@ -29,6 +30,8 @@ export const AppSidebarCard: React.FC<AppSidebarCardProps> = ({
                             <CardTitle>
                                 {cardTitle}
                             </CardTitle>
+                            
+                            
 
                             {AIGenerated ? (<SparklesIcon className="ml-auto"/>) : <></>}
                         </div>
@@ -36,6 +39,8 @@ export const AppSidebarCard: React.FC<AppSidebarCardProps> = ({
                 }
                 {cardDescription && <CardDescription>{cardDescription}</CardDescription>}
                 {cardAction && <CardAction>{cardAction}</CardAction>}
+                
+                <Separator className="my-2" />
             </CardHeader>}
             <CardContent>
                 {children}

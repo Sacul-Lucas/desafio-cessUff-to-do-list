@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, UnauthorizedException, Req, Patch, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UnauthorizedException, Req, Patch, UseGuards, NotFoundException } from '@nestjs/common';
 import { SetUserTaskDto } from '../tasks/dto/setUserTask.dto';
 import { JwtAuthGuard } from '../common/guards/jwtAuth.guard';
 import { CreateUserDto } from './dto/createUser.dto';
@@ -22,12 +22,12 @@ export class UsersController {
       message: users
     };
   }
-
-  @UseGuards(JwtAuthGuard)
+  
+  // @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const user = this.usersService.findOne(id);
-    if (!user) throw new UnauthorizedException('Usuário não encontrado');
+    if (!user) throw new NotFoundException('Usuário não encontrado');
 
     return {
       success: true,
