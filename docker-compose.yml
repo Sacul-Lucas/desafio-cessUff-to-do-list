@@ -5,7 +5,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.backend
-    container_name: todo-backend
+    container_name: taskflow-backend
     ports:
       - "2500:2500"
     env_file:
@@ -19,7 +19,7 @@ services:
       args:
         VITE_API_URL: http://localhost:2500
         VITE_API_BASE_URL: /api
-    container_name: todo-frontend
+    container_name: taskflow-frontend
     ports:
       - "2000:2000"
     env_file:
