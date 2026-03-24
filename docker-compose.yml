@@ -1,29 +1,53 @@
-version: "3.9"
-
 services:
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - mongodb_data:/data/db
+
   backend:
     build:
-      context: ./backend
+      context: ./desafioUff_backend
       dockerfile: Dockerfile.backend
     container_name: taskflow-backend
+    volumes:
+      - ./desafioUff_backend:/app
+      - /app/node_modules
     ports:
       - "2500:2500"
-    env_file:
-      - ./backend/.env
+    depends_on:
+      - mongo
+    environment:
+      PORT: ${BACK_PORT}
+      MONGO_URI: ${BACK_MONGO_URI}
+
+      JWT_SECRET: ${BACK_JWT_SECRET}
+      JWT_EXPIRES: ${BACK_JWT_EXPIRES}
+
+      DEFAULT_TASK_TITLE: ${BACK_DEFAULT_TASK_TITLE}
+      DEFAULT_TASK_DESCRIPTION: ${BACK_DEFAULT_TASK_DESCRIPTION}
+      DEFAULT_TASK_DEADLINE: ${BACK_DEFAULT_TASK_DEADLINE}
     restart: unless-stopped
 
   frontend:
     build:
-      context: ./frontend
+      context: ./desafioUff_frontend
       dockerfile: Dockerfile.frontend
       args:
-        VITE_API_URL: http://localhost:2500
-        VITE_API_BASE_URL: /api
+        VITE_API_URL: ${VITE_API_URL}
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
     container_name: taskflow-frontend
+    volumes:
+      - ./desafioUff_frontend:/app
+      - /app/node_modules
     ports:
       - "2000:2000"
-    env_file:
-      - ./frontend/.env
     depends_on:
       - backend
     restart: unless-stopped
+
+volumes:
+  mongodb_data:
+    driver: local
